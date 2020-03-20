@@ -24,7 +24,14 @@ window.onload = () => {
   const devMedia = typeof (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
   const navMedia = typeof (navigator.getUserMedia);
 
-  p().innerHTML = `navigator.mediaDevices.getUserMedia: ${devMedia} <br /> navigator.getUserMedia: ${navMedia}`;
+  p(!!navigator.mediaDevices).innerHTML = 'navigator.mediaDevices';
+  p(!!navigator.mediaDevices && !!navigator.mediaDevices.getUserMedia).innerHTML = 'navigator.mediaDevices.getUserMedia';
+  p(!!navigator.getUserMedia).innerHTML = 'navigator.getUserMedia';
+  p(!!navigator.webkitGetUserMedia).innerHTML = 'navigator.webkitGetUserMedia';
+  p(!!navigator.mozGetUserMedia).innerHTML = 'navigator.mozGetUserMedia';
+  p(!!navigator.msGetUserMedia).innerHTML = 'navigator.msGetUserMedia';
+
+  p().innerHTML = '<hr />';
 
   if (devMedia === 'function') {
     navigator.mediaDevices.getUserMedia({ audio: true })
