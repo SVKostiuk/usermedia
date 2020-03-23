@@ -21,6 +21,9 @@ window.onload = () => {
     return el;
   }
 
+  p(false).innerHTML = 'adapter';
+  p().innerHTML = '<hr />';
+
   const devMedia = typeof (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
   const navMedia = typeof (navigator.getUserMedia);
 
