@@ -21,7 +21,28 @@ window.onload = () => {
     return el;
   }
 
-  p(false).innerHTML = 'adapter';
+  const publisherEl = p();
+  publisherEl.style.height = '300px';
+  publisherEl.style.width = '300px';
+  publisherEl.id = 'publisher'
+
+  const errorEl = p(false);
+
+  window.publisher = OT.initPublisher(
+    'publisher',
+    {
+      insertMode: 'append',
+      width: '100%',
+      height: '100%',
+      showControls: false,
+    },
+    e => {
+      if (!e) return;
+      errorEl.innerHTML = JSON.stringify(e);
+    }
+  );
+
+
   p().innerHTML = '<hr />';
 
   const devMedia = typeof (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
